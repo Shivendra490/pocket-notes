@@ -7,7 +7,7 @@ const Home = () => {
       <div className={styles.imageWrapper}>
         <img src={homeImg} />
       </div>
-      <h2>Pocket Notes</h2>
+      <h2 className={styles.homeHeading}>Pocket Notes</h2>
       <p className={styles.homeText}>
         Send and receive messages without keeping your phone online. Use Pocket
         Notes on up to 4 linked devices and 1 mobile phone

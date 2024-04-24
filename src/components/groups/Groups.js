@@ -1,9 +1,10 @@
 import styles from "./Groups.module.css"
+import addIcon from "../../assets/addIcon.png"
 
-const Groups = () => {
+const Groups = (props) => {
   return (
     <section className={styles.groups}>
-      <h1>Pocket Notes</h1>
+      <h1 className={styles.groupsHeading}>Pocket Notes</h1>
       <div className={styles.group}>
         <div className={styles.avatar}>
             JS
@@ -15,6 +16,9 @@ const Groups = () => {
             JS
         </div>
         <div className={styles.groupName}>Javascript</div>
+      </div>
+      <div className={styles.addIconWrapper} onClick={props.onShowModal}>
+        <img src={addIcon} alt={'add Icon'}/>
       </div>
     </section>
   )

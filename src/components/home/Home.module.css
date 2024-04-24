@@ -19,7 +19,16 @@
     object-fit: cover;
 }
 
+.homeHeading{
+    font-size:clamp(15px,7vw,50px);
+    font-weight: 700;
+}
+
 .homeText{
     width:60%;
     text-align: center;
+    font-size: clamp(16px,5vw,22px);
+    line-height: 32px;
+    letter-spacing: 2%;
+    color:#292929;
 }

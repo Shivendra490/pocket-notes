@@ -13,7 +13,10 @@ const Groups = (props) => {
               props.activeGroupId === group.groupId ? styles.active : ""
             }`}
             key={group.groupId}
-            onClick={() => props.onSetActiveGroupIdHandler(group.groupId)}
+            onClick={() => {
+              props.onSetActiveGroupIdHandler(group.groupId);
+              props.isMobileView && props.setIsGroupsHide(true);
+            }}
           >
             <div
               className={styles.avatar}

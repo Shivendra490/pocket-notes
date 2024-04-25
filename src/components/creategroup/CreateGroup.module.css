@@ -23,7 +23,7 @@
 }
 
 .input {
-  font-size: clamp(10px, 1.5vw, 24px);
+  font-size: clamp(16px, 2vw, 24px);
   font-weight: 400;
   letter-spacing: 1px;
   flex: 0.6;

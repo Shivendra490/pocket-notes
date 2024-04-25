@@ -10,6 +10,21 @@ function App() {
   const [isModalShown, setIsModalShown] = useState(false);
   const [activeGroupId, setActiveGroupId] = useState(null);
   const [groupList, setGroupList] = useState();
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768);
+  const [isGroupsHide, setIsGroupsHide] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 768);
+      if (window.innerWidth > 768) {
+        setIsGroupsHide(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [window.innerWidth]);
 
   useEffect(() => {
     if (getPocketDb()) {
@@ -31,6 +46,7 @@ function App() {
   const hideModal = () => {
     setIsModalShown(false);
   };
+
   return (
     <main className={styles.app}>
       {isModalShown && (
@@ -39,16 +55,36 @@ function App() {
           onHideModal={hideModal}
         />
       )}
-      <section className={styles.left}>
+      <section
+        className={`${styles.left} ${
+          isMobileView && (isGroupsHide ? styles.hidden : "")
+        }`}
+      >
         <Groups
           groupList={groupList}
           onSetActiveGroupIdHandler={setActiveGroupIdHandler}
           onShowModal={showModal}
           activeGroupId={activeGroupId}
+          isGroupsHide={isGroupsHide}
+          setIsGroupsHide={setIsGroupsHide}
+          isMobileView={isMobileView}
         />
       </section>
-      <section className={styles.right}>
-        {activeGroupId ? <Notes activeGroupId={activeGroupId} /> : <Home />}
+      <section
+        className={`${styles.right} ${
+          isMobileView && (isGroupsHide ? "" : styles.hidden)
+        }`}
+      >
+        {activeGroupId ? (
+          <Notes
+            activeGroupId={activeGroupId}
+            isGroupsHide={isGroupsHide}
+            setIsGroupsHide={setIsGroupsHide}
+            isMobileView={isMobileView}
+          />
+        ) : (
+          <Home />
+        )}
       </section>
     </main>
   );

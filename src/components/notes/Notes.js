@@ -6,17 +6,17 @@ import backIcon from "../../assets/backIcon.png";
 import first2Chars from "../../utility/firstTwoChars";
 import { IoSendSharp } from "react-icons/io5";
 
-const Notes = ({ activeGroupId }) => {
+const Notes = (props) => {
   const [inputText, setInputText] = useState("");
   const [activeGroup, setActiveGroup] = useState("");
 
   useEffect(() => {
     const pocketDb = getPocketDb();
     const currentGroup = pocketDb?.find(
-      (group) => group.groupId === activeGroupId
+      (group) => group.groupId === props.activeGroupId
     );
     setActiveGroup(currentGroup);
-  }, [activeGroupId]);
+  }, [props.activeGroupId]);
 
   const addNoteHandler = () => {
     if (!inputText) {
@@ -26,10 +26,10 @@ const Notes = ({ activeGroupId }) => {
     const noteTime = formatDate();
     const noteText = inputText;
     const note = { noteId, noteTime, noteText };
-    addNoteToGroup(activeGroupId, note);
+    addNoteToGroup(props.activeGroupId, note);
     const pocketDb = getPocketDb();
     const currentGroup = pocketDb?.find(
-      (group) => group.groupId === activeGroupId
+      (group) => group.groupId === props.activeGroupId
     );
     setActiveGroup(currentGroup);
     setInputText("");
@@ -37,7 +37,14 @@ const Notes = ({ activeGroupId }) => {
   return (
     <section className={styles.notes}>
       <header className={styles.notesHeader}>
-        <img src={backIcon} alt="back icon" className={styles.backIcon} />
+        <img
+          src={backIcon}
+          alt="back icon"
+          className={styles.backIcon}
+          onClick={() => {
+            props.isMobileView && props.setIsGroupsHide(false);
+          }}
+        />
         <div
           className={styles.avatar}
           style={{ backgroundColor: activeGroup.bgColor }}

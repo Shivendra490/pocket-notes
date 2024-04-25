@@ -66,3 +66,13 @@
   height: 100%;
   object-fit: contain;
 }
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .addIconWrapper {
+    left: 80%;
+  }
+}

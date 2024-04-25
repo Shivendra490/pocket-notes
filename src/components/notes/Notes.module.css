@@ -108,16 +108,16 @@ textarea:focus {
 
 .sendIcon {
   position: absolute;
-  
+
   right: 1vw;
   bottom: 1vw;
-  font-size: 50px;
+  font-size: clamp(24px, 2vw, 42px);
 }
-.enabled{
-  color:#001F8B;
+.enabled {
+  color: #001f8b;
 }
-.disabled{
-  color:lightgrey;
+.disabled {
+  color: lightgrey;
 }
 
 ::-webkit-scrollbar {
@@ -130,4 +130,18 @@ textarea:focus {
 
 ::-webkit-scrollbar-thumb {
   background: lightgrey;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .backIcon {
+    display: block;
+  }
+  .sendIcon {
+    right: 1.5vw;
+    bottom: 1.5vw;
+  }
 }

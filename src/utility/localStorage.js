@@ -13,13 +13,12 @@ const setPocketDb = (group) => {
 };
 
 const addNoteToGroup = (activeGroupId, note) => {
-  console.log("adnotetogroup", activeGroupId, note);
   let pocketDb = getPocketDb();
   if (pocketDb) {
     const currentGroupIndex = pocketDb?.findIndex(
       (group) => group.groupId === activeGroupId
     );
-    console.log(currentGroupIndex);
+
     pocketDb[currentGroupIndex].notes = [
       ...pocketDb[currentGroupIndex].notes,
       note,

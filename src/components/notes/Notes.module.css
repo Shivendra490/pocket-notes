@@ -37,6 +37,39 @@
 .notesBody {
   flex: 1;
   background-color:#DAE5F5;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  gap:2vh;
+  padding-top: 1rem;
+  /* max-height:100px;
+  overflow:hidden; */
+}
+
+.singleNote{
+  width:94%;
+  background-color:#FFFFFF;
+  padding:1rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+
+}
+
+.noteText{
+  font-size: clamp(13px,2vw,18px);
+  font-weight: 400;
+  letter-spacing: .25px;
+  line-height:clamp(16px,1.5vw,28px);
+  color:#000000
+}
+.noteTime{
+  text-align: right;
+  font-size: clamp(13px,2vw,18px);
+  font-weight: 500;
+  color:#353535
 }
 
 .notesFooter {
@@ -60,6 +93,7 @@
     font-weight: 400;
     font-size: clamp(1rem, 1.5vw, 2.5rem);
     padding:1rem;
+    border-radius: 10px;
 } 
 
 textarea:focus{

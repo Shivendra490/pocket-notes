@@ -10,21 +10,28 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  padding: 0.5rem;
-  background-color:#001F8B;
-  color:white;
+  padding: 1rem;
+  background-color: #001f8b;
+  color: white;
+}
+
+.backIcon {
+  width: 20px;
+  height: 16px;
+  object-fit: contain;
+  display: none;
 }
 
 .avatar {
-  width: 70px;
-  height: 70px;
+  width: clamp(48px, 5vw, 64px);
+  height: clamp(48px, 5vw, 64px);
   border-radius: 50%;
   display: grid;
   place-content: center;
   background-color: blue;
   font-weight: 500;
-  font-size: large;
-  
+  font-size: clamp(20px, 2vw, 24px);
+  text-transform: capitalize;
 }
 
 .groupName {
@@ -36,46 +43,45 @@
 
 .notesBody {
   flex: 1;
-  background-color:#DAE5F5;
+  background-color: #dae5f5;
   display: flex;
   flex-direction: column;
-  align-items:center;
-  gap:2vh;
+  align-items: center;
+  gap: 2vh;
   padding-top: 1rem;
-  /* max-height:100px;
-  overflow:hidden; */
+  height: calc(100vh-30vh);
+  overflow: auto;
 }
 
-.singleNote{
-  width:94%;
-  background-color:#FFFFFF;
-  padding:1rem;
+.singleNote {
+  width: 94%;
+  background-color: #ffffff;
+  padding: 1rem;
   border-radius: 5px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  gap:1rem;
-
+  gap: 1rem;
 }
 
-.noteText{
-  font-size: clamp(13px,2vw,18px);
+.noteText {
+  font-size: clamp(13px, 2vw, 18px);
   font-weight: 400;
-  letter-spacing: .25px;
-  line-height:clamp(16px,1.5vw,28px);
-  color:#000000
+  letter-spacing: 0.25px;
+  line-height: clamp(16px, 1.5vw, 28px);
+  color: #000000;
 }
-.noteTime{
+.noteTime {
   text-align: right;
-  font-size: clamp(13px,2vw,18px);
+  font-size: clamp(13px, 2vw, 18px);
   font-weight: 500;
-  color:#353535
+  color: #353535;
 }
 
 .notesFooter {
   width: 100%;
   height: 180px;
-  background-color:#001F8B;
+  background-color: #001f8b;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,25 +93,41 @@
   position: relative;
 }
 
-.textAreaWrapper > textarea{
-    width:100%;
-    height: 100%;
-    font-weight: 400;
-    font-size: clamp(1rem, 1.5vw, 2.5rem);
-    padding:1rem;
-    border-radius: 10px;
-} 
-
-textarea:focus{
-    outline:none;
+.textAreaWrapper > textarea {
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.5vw, 2.5rem);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-.sendIcon{
-position: absolute;
-
-right:1vw;
-bottom:1vw;
-font-size: 50px;
+textarea:focus {
+  outline: none;
 }
 
+.sendIcon {
+  position: absolute;
+  
+  right: 1vw;
+  bottom: 1vw;
+  font-size: 50px;
+}
+.enabled{
+  color:#001F8B;
+}
+.disabled{
+  color:lightgrey;
+}
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+}

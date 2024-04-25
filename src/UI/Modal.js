@@ -6,7 +6,6 @@ const Backdrop = (props) => {
     <div
       className={styles.backdrop}
       onClick={(e) => {
-        console.log("click in backdrop");
         props.onHideModal();
       }}
     ></div>

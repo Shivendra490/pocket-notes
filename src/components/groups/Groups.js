@@ -1,5 +1,6 @@
 import styles from "./Groups.module.css";
 import addIcon from "../../assets/addIcon.png";
+import first2Chars from "../../utility/firstTwoChars";
 
 const Groups = (props) => {
   return (
@@ -7,8 +8,19 @@ const Groups = (props) => {
       <h1 className={styles.groupsHeading}>Pocket Notes</h1>
       {props.groupList?.map((group) => {
         return (
-          <div className={styles.group} key={group.groupId} onClick={()=>props.onSetActiveGroupIdHandler(group.groupId)}>
-            <div className={styles.avatar} style={{backgroundColor:group.bgColor}}>{group.groupName[0].toUpperCase()}</div>
+          <div
+            className={`${styles.group} ${
+              props.activeGroupId === group.groupId ? styles.active : ""
+            }`}
+            key={group.groupId}
+            onClick={() => props.onSetActiveGroupIdHandler(group.groupId)}
+          >
+            <div
+              className={styles.avatar}
+              style={{ backgroundColor: group.bgColor }}
+            >
+              {first2Chars(group.groupName)}
+            </div>
             <div className={styles.groupName}>{group.groupName}</div>
           </div>
         );

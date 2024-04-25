@@ -1,57 +1,60 @@
 import styles from "./Notes.module.css";
-import sendIcon from "../../assets/sendIcon.svg";
 import { useEffect, useState } from "react";
 import { addNoteToGroup, getPocketDb } from "../../utility/localStorage";
+import formatDate from "../../utility/formatDate";
+import backIcon from "../../assets/backIcon.png";
+import first2Chars from "../../utility/firstTwoChars";
+import { IoSendSharp } from "react-icons/io5";
 
-const Notes = ({activeGroupId}) => {
+const Notes = ({ activeGroupId }) => {
   const [inputText, setInputText] = useState("");
-  const [activeGroup,setActiveGroup]=useState("")
+  const [activeGroup, setActiveGroup] = useState("");
 
-  // const addNoteHandler = (note) => {
-  //   console.log("nttttts", note);
-  //   addNoteToGroup(activeGroupId, note);
-  // };
-
-  useEffect(()=>{
-    const pocketDb=getPocketDb()
-    const currentGroup=pocketDb?.find((group)=>group.groupId===activeGroupId)
-    setActiveGroup(currentGroup)
-
-    // if(activeGroupId){
-    //   const currentGroup=groupList?.find((curGroup)=>curGroup.groupId===activeGroupId)
-    //   setActiveGroupNotes([...currentGroup.notes])
-    // }
-  },[activeGroupId])
+  useEffect(() => {
+    const pocketDb = getPocketDb();
+    const currentGroup = pocketDb?.find(
+      (group) => group.groupId === activeGroupId
+    );
+    setActiveGroup(currentGroup);
+  }, [activeGroupId]);
 
   const addNoteHandler = () => {
     if (!inputText) {
       return;
     }
     const noteId = new Date().getTime().toString();
-    const noteTime = new Date();
+    const noteTime = formatDate();
     const noteText = inputText;
     const note = { noteId, noteTime, noteText };
-    // props.onAddNoteHandler(note);
-    addNoteToGroup(activeGroupId,note)
-    const pocketDb=getPocketDb()
-    const currentGroup=pocketDb?.find((group)=>group.groupId===activeGroupId)
-    setActiveGroup(currentGroup)
+    addNoteToGroup(activeGroupId, note);
+    const pocketDb = getPocketDb();
+    const currentGroup = pocketDb?.find(
+      (group) => group.groupId === activeGroupId
+    );
+    setActiveGroup(currentGroup);
     setInputText("");
   };
   return (
     <section className={styles.notes}>
       <header className={styles.notesHeader}>
-        <div className={styles.avatar} style={{backgroundColor:activeGroup.bgColor}}>{activeGroup?.groupName.toUpperCase()}</div>
+        <img src={backIcon} alt="back icon" className={styles.backIcon} />
+        <div
+          className={styles.avatar}
+          style={{ backgroundColor: activeGroup.bgColor }}
+        >
+          {first2Chars(activeGroup?.groupName)}
+        </div>
         <div className={styles.groupName}>{activeGroup?.groupName}</div>
       </header>
       <div className={styles.notesBody}>
         {activeGroup.notes?.map((note) => {
           return (
-            <div className={styles.singleNote}>
-              <p className={styles.noteText}>
-                {note.noteText}
+            <div className={styles.singleNote} key={note.noteId}>
+              <p className={styles.noteText}>{note.noteText}</p>
+              <p className={styles.noteTime}>
+                {note.noteTime.substring(0, 11)} &#8226;{" "}
+                {note.noteTime.substring(13)}{" "}
               </p>
-              <p className={styles.noteTime}>9 Mar 2023 . 10:10 AM</p>
             </div>
           );
         })}
@@ -63,12 +66,18 @@ const Notes = ({activeGroupId}) => {
             onChange={(e) => setInputText(e.target.value)}
             value={inputText}
           ></textarea>
-          <img
+          <IoSendSharp
+            className={`${styles.sendIcon} ${
+              inputText ? styles.enabled : styles.disabled
+            }`}
+            onClick={addNoteHandler}
+          />
+          {/* <img
             src={sendIcon}
             className={styles.sendIcon}
             onClick={addNoteHandler}
-            alt='send Icon'
-          />
+            alt="send Icon"
+          /> */}
         </div>
       </footer>
     </section>

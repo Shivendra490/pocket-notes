@@ -1,16 +1,19 @@
-.app{
-width:100vw;
-height:100vh;
-background-color: aqua;
-display: flex;
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: aqua;
+  display: flex;
 }
 
-.left{
-    flex:.3;
-    background-color: white;
+.left {
+  width: 30%;
+  height: 100vh;
+  background-color: white;
+  overflow: hidden;
 }
 
-.right{
-    flex:.7;
-    
+.right {
+  width: 70%;
+  height: 100vh;
+  overflow: hidden;
 }

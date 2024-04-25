@@ -1,34 +1,51 @@
-.home{
-    width:100%;
-    height:100%;
-    background-color: #dae5f5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:1rem;
+.home {
+  width: 100%;
+  height: 100%;
+  background-color: #dae5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
 }
 
-.imageWrapper{
-    width:60%;
+.imageWrapper {
+  width: 60%;
 }
 
-.imageWrapper > img{
-    width:100%;
-    height: 100%;
-    object-fit: cover;
+.imageWrapper > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.homeHeading{
-    font-size:clamp(15px,7vw,50px);
-    font-weight: 700;
+.homeHeading {
+  font-size: clamp(15px, 7vw, 50px);
+  font-weight: 700;
 }
 
-.homeText{
-    width:60%;
-    text-align: center;
-    font-size: clamp(16px,5vw,22px);
-    line-height: 32px;
-    letter-spacing: 2%;
-    color:#292929;
+.homeText {
+  width: 60%;
+  text-align: center;
+  font-size: clamp(16px, 5vw, 22px);
+  line-height: 32px;
+  letter-spacing: 2%;
+  color: #292929;
+  margin-bottom: 15vh;
+}
+
+.homeFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+.lockIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  object-fit: contain;
 }

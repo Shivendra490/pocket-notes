@@ -23,8 +23,6 @@ const CreateGroup = (props) => {
     setGroupName("");
     setBgColor("");
     props.onHideModal();
-
-    console.log("here", groupName, bgColor);
   };
   return (
     <Modal onHideModal={props.onHideModal}>

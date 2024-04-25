@@ -78,6 +78,7 @@
 
 @media only screen and (max-width: 768px) {
   .addIconWrapper {
-    left: 80%;
+    left: 75%;
+    bottom:4vh;
   }
 }

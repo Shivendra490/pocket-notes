@@ -8,13 +8,13 @@ const CreateGroup = (props) => {
   const [bgColor, setBgColor] = useState("");
 
   const createGroupHandler = () => {
-    if (!groupName || !bgColor) {
+    if (!groupName.trim() || !bgColor) {
       return;
     }
     const groupId = new Date().getTime().toString();
     const group = {
       groupId: groupId,
-      groupName: groupName,
+      groupName: groupName.trim(),
       bgColor: bgColor,
       notes: [],
     };

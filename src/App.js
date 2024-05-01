@@ -21,16 +21,15 @@ function App() {
       }
     };
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [window.innerWidth]);
-
-  useEffect(() => {
     if (getPocketDb()) {
       setGroupList(getPocketDb());
     }
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+
 
   const updateGroupList = () => {
     setGroupList(getPocketDb());
